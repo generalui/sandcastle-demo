@@ -35,6 +35,8 @@ npm run build-xrpk
 
 ## Run XR Package
 
+```bash
 Go to https://launcher.pluto.app/
 upload genuisandcastledemo.wbn from the dist folder
 Note: there is currently a bug with the background (dark gray disk)
+```
