@@ -1,54 +1,40 @@
-<h1 align="center"> Sandcastle </h1>
-<h2 align="center"> A friendly framework for creating spatial-first, multi-user WebXR apps </h2>
+## Getting started
 
-![Sandcastle Samples](./sandcastleprojects.png)
+### Install
 
-## Features
+```bash
+nvm use 16
+git clone https://github.com/generalui/sandcastle-demo.git
+cd sandcastle-demo
+npm install
+```
 
-- Built on vanilla [Three.js](http://Three.js.org/)
+### Run demo
 
-- Made for WebXR (ergonomic XR [session & state management](https://github.com/plutovr/sandcastle/wiki#webxr-general-1) & easy [XR input event handling](https://github.com/plutovr/sandcastle/wiki#webxr-input-1))
+```bash
+npm start
+```
 
-- Built-in [Physics & Collision Detection](https://github.com/plutovr/sandcastle/wiki#physics-1) courtesy of [CannonJS](http://www.cannonjs.org/)
+## Create XR Package
 
-- Easy, WebRTC-based [networking & media streaming](https://github.com/plutovr/sandcastle/wiki#networking-1) courtesy of [ThreeNetwork](https://github.com/takahirox/ThreeNetwork)
+Notes:
 
-- Designed for [XR Packages](https://github.com/webaverse/xrpackage) and shared WebXR experiences/multiapps
+- Current version of [xrpk (0.0.83)](https://github.com/webaverse/xrpk/issues/1) doesn't seem to be working on M1
+- Version used in the pluto tutorial throws an error (missing file). I was able to fix it by modifying the following:
 
-- Tiny project build sizes (~250kb gzipped before assets, way less than the image above!)
+```bash
+# node_modules/xrpk/cli.js - line 37
+const getContract = () => undefined;
+```
 
----
+Then
 
-## Usage
+```bash
+npm run build-xrpk
+```
 
-Run `npm init sandcastle NAMEOFPROJECT` _OR_ `npx create-sandcastle NAMEOFPROJECT`, where `NAMEOFPROJECT` is your desired project name.
+## Run XR Package
 
-This will automatically:
-
-1. clone this repo into a new folder of that name
-2. install Sandcastle's dependencies
-3. remove the `.git` repo
-4. launch the dev server and
-5. open the default scene (located at `./src/examples/defaultScene.js`) in your browser.
-
----
-
-## Development & Building
-
-- `npm start` will launch the dev server and open the sample scene.
-
-- `npm run build` will process and build your project into a `dist` folder.
-
-- `npm run build-xrpk` will `npm build`, then create an [XR Package](https://github.com/webaverse/xrpackage) in `dist`. (Note that this script runs an interactive CLI for details about the various aspects of your XR Package.)
-
-- `npm run dev-xrpk` will do the same but output an _unminified, source-mapped_ XR Package to help you debug your XR Package in your runtime of choice (we recommend [Chimera](https://chimera.pluto-api.com/)). Please note the resulting .wbn file size will be very large - don't use this in production!
-
----
-
-## Learning Resources
-
-- Check out the [Wiki](https://github.com/plutovr/sandcastle/wiki) for a closer look at Sandcastle's Networking API, Physics API, event handling and state management, asset pipelines and more.
-
-- See the `examples` folder for usage examples of networking, media streaming, physics, AR-in-VR experiences and more.
-
-#### This project is in pre-alpha and currently undergoes daily work. Is something broken or unclear? Please file an issue!
+Go to https://launcher.pluto.app/
+upload genuisandcastledemo.wbn from the dist folder
+Note: there is currently a bug with the background (dark gray disk)
