@@ -54,7 +54,7 @@ _Notes:_
 const getContract = () => undefined;
 ```
 
-Then, build the XR package (while the app is running locally):
+Build the XR package:
 
 ```sh
 npm run build-xrpk
